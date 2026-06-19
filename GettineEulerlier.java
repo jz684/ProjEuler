@@ -1,65 +1,58 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class GettineEulerlier {
-    public static void main (String[] args){
-        long input = 20L ;//600851475143L
+    public static void main (String[] args){//this is where im running each function to see if it works
+        long input = 600851475143L ;//600851475143L
         System.out.println(primeTime(input));
     }
 
     //question 3
+    //just have to find the largest prime factor
     public static long primeTime(long target){
-        //looking back at this the prime number cant be more than half so you dont actually need to start at the number
-        //still needs to be a bit faster so gonna try looking for factors instead because there is realistically less of them
-        boolean checker = false;
-        for(long i = target; i > 0; i--){//this is for factor checking
-            
-            if((target/i)*i == target && target/i % 2 != 1 ){//this is to actually check if it's a factor and if it's even. If its even it can't be a prime number
-                //prime checking
-                
-                for(long j = i; j < target/2+1; j++){
-                    
-                    if(((double)i)/j == i/j && j!=i){//if the number is prime
-                        checker = false;
-                        
-                    }
-                    
-                }
-                if(checker){
-                    System.out.println("harro");
-                    return i;
-
-                }   
-            }
-
-        }
+        HashSet<Long> facts = factoring(target);
         
-        // boolean checker = false;
-        // long temp = target;
-        // if(target%2== 0){//will always make it odd
-        //     temp--;
-        // }
-        // for(long i = temp; i>1; i-=2){//each number
-        //     for(long j = temp; j>1; j--){
-        //         if(((double)i)/j == i/j){//if the number is prime
-        //             checker = false;
-        //         }
-        //         if(j == i){
-        //             checker = true;
-        //         }
-                
-        //     }
-        //     if(checker){
-        //         //System.out.println("a prime number is "+i);
-        //         temp = target/2;
-        //         if((temp/i)*i == target){//if it's a factor
-        //             System.out.println("a prime factor is "+i);
-        //             return i;
-        //         }
-        //     }
-        // }
+        ArrayList<Long> passing = new ArrayList<>();//wanted to try to not do array list but i think i might need to unless I want to rewrite 
+        //im gonna try to shortcut and just check the large numbers without even trying the small ones
+        for(long i : facts){
+            if(factoring(i).size() == 1){//should just be one and itself
+                passing.add(i);
+            }
+        }
+        long largest = 0;
+        for(long i :passing){
+            if(largest < i){
+                largest = i;
+            }
+        }
+        return largest;
 
-
-        return -1111111111;//if its this number i goofed
+        //return -111111111111L;//I goofed if its this
     }
+    //helpers for question 3
+    public static boolean isSame(Long val , Long targ){//this will show if the numbers are the same
+        if(targ / val * val == targ){
+            return true;
+        }
+        return false;
+    } // O(1)
 
+    public static HashSet factoring(long target){
+        HashSet<Long> facts = new HashSet<>();
+        //finding the factors
+        for(long i = 1 ; i<target ; i++){//O(n) bc each number needs to be checked
+            if(isSame(i, target) && !facts.contains(target/i)){
+                facts.add(target/i);
+            }
+        }
+        // System.out.print(target + ": "); //helped me find the variables that actually went into the list
+        // for(long i : facts){
+        //     System.out.print(i + " ");
+        // }
+        // System.out.println("");
+        return facts;
+    }
 
 
     //question 2
