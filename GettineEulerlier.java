@@ -4,8 +4,30 @@ import java.util.HashSet;
 
 public class GettineEulerlier {
     public static void main (String[] args){//this is where im running each function to see if it works
-        long input = 600851475143L ;//600851475143L
-        System.out.println(primeTime(input));
+        // long input = 600851475143L ;//600851475143L
+        // System.out.println(primeTime(input));
+        tacoCat();
+    }
+
+    //question 4:Find the largest palindrome made from the product of two 3-digit numbers.
+    // 999 * 999 = 998001 : prolly cant brute force and check all numbers if theyre palidromes
+    //idea:use the idea that the largest number is sixe digits or less and just use 997 then mirror it and subtract one from the end number
+    //the issue is really just how many numbers can my computer check
+    public static void tacoCat(){
+        String hold = "";
+        String num = "";
+        boolean cont = true;
+        for(int i = 98; i>0; i--){
+            hold = num = ""+i;
+            while(cont){
+                num += hold.substring(hold.length()-1);
+                hold = hold.substring(0, hold.length()-1);
+                cont = hold.length() > 0;
+            }
+            System.out.println("this is the final result: " + num);
+            cont = true;
+        }
+        
     }
 
     //question 3
