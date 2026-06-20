@@ -36,9 +36,10 @@ public class GettineEulerlier {
             //System.out.println("this is the final result: " + num);
             if(valid.contains(Integer.parseInt(num))){
                 System.out.println("palin is "+ num);
-                cont = false;
+                i=-1;
             }
-            cont = true;
+                cont = true;
+            
         }
 
     }
