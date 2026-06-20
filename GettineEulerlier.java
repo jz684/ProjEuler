@@ -6,14 +6,52 @@ public class GettineEulerlier {
     public static void main (String[] args){//this is where im running each function to see if it works
         // long input = 600851475143L ;//600851475143L
         // System.out.println(primeTime(input));
-        System.out.println(smallMult());
+        System.out.println(smallMult(1));
     }
 
     //question 5:What is the smallest positive number that is evenly divisible by all of the numbers from  1 to 20?
     //I think i might be able to set up a system that essentially is just the numbers that are prime times the largest numbers made of other numbers. 
     //this essentially is something like 2*3=6 this means that I don't need to mult the number that I'm going to make by 2 and three bc they are accounted for by 6
-    public static int smallMult(){//im going to try to do a hardcode version for now, but will maybe try to come back later to be able to just get a target num
-        return 1*7*8*9;
+    public static long smallMult(long target){
+        //return 1*7*4*9*10;
+        //return 1*2*3*4*5*6*7*8*9*10*11*12*13*14*15*16*17*18*19*20; 
+        //idea:reduce all other numbers by the multiple
+        // for(int i = 10 ; i>0; i--){
+        //     for(int j = 0; j<i; j++){
+        //         if(i%j == 0){
+
+        //         }
+        //     }
+        // }
+        //I could just try to cheat this 
+        if(target%2 == 0 && 
+            target%3 == 0 && 
+            target%3 == 0 && 
+            target%4 == 0 && 
+            target%5 == 0 && 
+            target%6 == 0 && 
+            target%7 == 0 && 
+            target%8 == 0 && 
+            target%9 == 0 && 
+            target%10 == 0 &&
+            target%11 == 0 && 
+            target%12 == 0 && 
+            target%13 == 0 && 
+            target%14 == 0 && 
+            target%15 == 0 && 
+            target%16 == 0 && 
+            target%17 == 0 && 
+            target%18 == 0 && 
+            target%19 == 0 && 
+            target%20 == 0){
+            System.out.println("This is the target" + target);
+            return target;
+        }
+        target += 1L;
+        if(target == 0){
+            return -1;
+        }
+        return smallMult(target);
     }
 
     //question 4:Find the largest palindrome made from the product of two 3-digit numbers.
