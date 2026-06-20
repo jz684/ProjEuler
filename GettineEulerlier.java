@@ -11,23 +11,36 @@ public class GettineEulerlier {
 
     //question 4:Find the largest palindrome made from the product of two 3-digit numbers.
     // 999 * 999 = 998001 : prolly cant brute force and check all numbers if theyre palidromes
-    //idea:use the idea that the largest number is sixe digits or less and just use 997 then mirror it and subtract one from the end number
+    //idea:use the idea that the largest number is six digits or less and just use 997 then mirror it and subtract one from the end number
     //the issue is really just how many numbers can my computer check
     public static void tacoCat(){
+        //going to do a hashmap of all values so that once i find a palindrome i can just submit
+        HashSet<Integer> valid = new HashSet<>();
+        for(int i = 100; i < 1000; i++){
+            for(int j = 100; j < 1000; j++){
+                valid.add(i*j);
+            }
+        }
         String hold = "";
         String num = "";
         boolean cont = true;
-        for(int i = 98; i>0; i--){
+        //simple way to get palindromes
+        for(int i = 998; i>0; i--){
             hold = num = ""+i;
+            //this is the reversing and adding to the og number
             while(cont){
                 num += hold.substring(hold.length()-1);
                 hold = hold.substring(0, hold.length()-1);
                 cont = hold.length() > 0;
             }
-            System.out.println("this is the final result: " + num);
+            //System.out.println("this is the final result: " + num);
+            if(valid.contains(Integer.parseInt(num))){
+                System.out.println("palin is "+ num);
+                cont = false;
+            }
             cont = true;
         }
-        
+
     }
 
     //question 3
