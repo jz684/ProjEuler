@@ -6,7 +6,21 @@ public class GettineEulerlier {
     public static void main (String[] args){//this is where im running each function to see if it works
         // long input = 600851475143L ;//600851475143L
         // System.out.println(primeTime(input));
-        System.out.println(smallMult());
+        bigDiff(100);
+    }
+    //quesiton 6: Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+    public static void bigDiff(long target){
+        long square = 0;
+        long sum = 0;
+        for(int i =1;  i<=target; i++){
+            sum += i*i;
+            square += i;
+        }
+        System.out.println("the sum is: " + sum);
+        square = square * square;
+        System.out.println("the square is: " + square);
+
+        System.out.println("The difference is " + (square - sum));
     }
 
     //question 5:What is the smallest positive number that is evenly divisible by all of the numbers from  1 to 20?
