@@ -6,13 +6,13 @@ public class GettineEulerlier {
     public static void main (String[] args){//this is where im running each function to see if it works
         // long input = 600851475143L ;//600851475143L
         // System.out.println(primeTime(input));
-        System.out.println(smallMult(1));
+        System.out.println(smallMult());
     }
 
     //question 5:What is the smallest positive number that is evenly divisible by all of the numbers from  1 to 20?
     //I think i might be able to set up a system that essentially is just the numbers that are prime times the largest numbers made of other numbers. 
     //this essentially is something like 2*3=6 this means that I don't need to mult the number that I'm going to make by 2 and three bc they are accounted for by 6
-    public static long smallMult(long target){
+    public static long smallMult(){
         //return 1*7*4*9*10;
         //return 1*2*3*4*5*6*7*8*9*10*11*12*13*14*15*16*17*18*19*20; 
         //idea:reduce all other numbers by the multiple
@@ -24,7 +24,10 @@ public class GettineEulerlier {
         //     }
         // }
         //I could just try to cheat this 
-        if(target%2 == 0 && 
+        long target = 1;
+        boolean cont = true;
+        while(cont){
+            if(target%2 == 0 && 
             target%3 == 0 && 
             target%3 == 0 && 
             target%4 == 0 && 
@@ -44,14 +47,12 @@ public class GettineEulerlier {
             target%18 == 0 && 
             target%19 == 0 && 
             target%20 == 0){
-            System.out.println("This is the target" + target);
-            return target;
+                System.out.println("This is the target" + target);
+                return target;
+            }
+            target++;
         }
-        target += 1L;
-        if(target == 0){
-            return -1;
-        }
-        return smallMult(target);
+        return -1;
     }
 
     //question 4:Find the largest palindrome made from the product of two 3-digit numbers.
