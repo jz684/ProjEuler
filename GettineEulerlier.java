@@ -6,7 +6,14 @@ public class GettineEulerlier {
     public static void main (String[] args){//this is where im running each function to see if it works
         // long input = 600851475143L ;//600851475143L
         // System.out.println(primeTime(input));
-        tacoCat();
+        System.out.println(smallMult());
+    }
+
+    //question 5:What is the smallest positive number that is evenly divisible by all of the numbers from  1 to 20?
+    //I think i might be able to set up a system that essentially is just the numbers that are prime times the largest numbers made of other numbers. 
+    //this essentially is something like 2*3=6 this means that I don't need to mult the number that I'm going to make by 2 and three bc they are accounted for by 6
+    public static int smallMult(){//im going to try to do a hardcode version for now, but will maybe try to come back later to be able to just get a target num
+        return 1*7*8*9;
     }
 
     //question 4:Find the largest palindrome made from the product of two 3-digit numbers.
@@ -39,7 +46,6 @@ public class GettineEulerlier {
                 i=-1;
             }
                 cont = true;
-            
         }
 
     }
