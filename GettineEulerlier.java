@@ -12,27 +12,34 @@ public class GettineEulerlier {
     //idea: Use the fact that computers can make hundreds of thousands of computations to just make an array that counts how many times a number is made
     //then move only the prime numbers to a second and grab the index we're looking for
     public static long optimousPrime(int target){
-        ArrayList<Integer> numbers  = new ArrayList<>(100000000);
+        int[] numbers  = new int[500000000];
         for(int i =1; i<20000; i++){
             for(int j =1; j<20000; j++){
-                numbers.set(i*j, numbers.get(i)+1);
+                numbers[i*j] = numbers[i*j]+1;
             }
         }
         for(int i = 0; i < 21; i++){
-            System.out.println(i +": "+numbers.get(i));
+            System.out.println(i +": "+numbers[i]);
         }
         ArrayList<Integer> prime = new ArrayList<>();
-        for(int i = 0; i < numbers.size(); i++){
-            if(numbers.get(i) == 2){
+        boolean cont = true;
+        int i =0;
+        while(cont){
+            if(numbers[i] == 2){
                 prime.add(i);
             }
+            i++;
+            if(prime.size() == target){
+                cont=false;
+            }
         }
+        
         System.out.println("this is for the prime list-----------------------------------------------------------");
-        for(int i = 0; i < 21; i++){
+        for(i = 0; i < 21; i++){
             System.out.println(i + " : "+prime.get(i));
         }
         System.out.println(prime.indexOf(104743));
-        System.out.println(numbers.get(104743));
+        System.out.println(numbers[104743]);
         return prime.get(target-1);
     }
 
