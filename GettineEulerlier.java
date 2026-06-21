@@ -12,13 +12,13 @@ public class GettineEulerlier {
     //idea: Use the fact that computers can make hundreds of thousands of computations to just make an array that counts how many times a number is made
     //then move only the prime numbers to a second and grab the index we're looking for
     public static long optimousPrime(int curr, int have, int target){
-        if(have == target){
-            return curr-1;
+        while(have < target){
+            curr++;
+            if(prime(curr)){
+                have++;
+            }
         }
-        if(prime(curr)){
-            return optimousPrime(curr+1, have+1, target);
-        }
-        return optimousPrime(curr+1, have, target);
+        return curr;
     }
 
     public static boolean prime(int num){
