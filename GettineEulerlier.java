@@ -6,9 +6,39 @@ public class GettineEulerlier {
     public static void main (String[] args){//this is where im running each function to see if it works
         // long input = 600851475143L ;//600851475143L
         // System.out.println(primeTime(input));
-        simpsons();
+        triplingUp();
     }
+    //question 9: There exists exactly one Pythagorean triplet for which a+b+c=1000. Find the product abc.
+    //doing a little math i got to: a+b+sqrt(a^2 + b^2) = 1000 --> 0=1000000-a2000-b2000. I'm not the surest 
+    //on what my next step is supposed to be since i already plugged in for c, so the code will carry the rest
+    public static void triplingUp(){
+        for(int a = 1 ; a < 1000; a++){
+            for(int b = 1 ; b < 1000; b++){
+                for(int c = 1 ; c < 1000; c++){
+                    if(check1(a, b, c) && check2(a, b, c)){
+                        System.out.println("product of "+ a+ " "+ b+ " and "+c+" is "+ (a*b*c));
+                    }
+                }
+            }
+        }
+        System.out.println("never happening");
+    }
+
+    public static boolean check1(int a, int b, int c){//this is the pythag identity
+        if((a*a + b*b) == c*c){
+            return true;
+        }
+        return false;
+    }
+    public static boolean check2(int a, int b, int c){//this is the a+b+c = 1000
+        if(a+b+c == 1000){
+            return true;
+        }
+        return false;
+    }
+
     //question 8:Find the thirteen adjacent digits in the 1000-digit number that have the greatest product. What is the value of this product?
+    //number list:
     //73167176531330624919225119674426574742355349194934969835203127745063262395783180169848018694788518438586156078911294949545950173795833195285320880
     //55111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866
     // 4523874930358907296290491560440772390713810515859307960866701724271218839987979087922749219016997208880937766572733300105336788122023542180975125
