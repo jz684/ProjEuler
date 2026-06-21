@@ -6,8 +6,36 @@ public class GettineEulerlier {
     public static void main (String[] args){//this is where im running each function to see if it works
         // long input = 600851475143L ;//600851475143L
         // System.out.println(primeTime(input));
-        bigDiff(100);
+        System.out.println(optimousPrime(10001));
     }
+    //question 7:What is the  10001st prime number?
+    //idea: Use the fact that computers can make hundreds of thousands of computations to just make an array that counts how many times a number is made
+    //then move only the prime numbers to a second and grab the index we're looking for
+    public static long optimousPrime(int target){
+        ArrayList<Integer> numbers  = new ArrayList<>(100000000);
+        for(int i =1; i<20000; i++){
+            for(int j =1; j<20000; j++){
+                numbers.set(i*j, numbers.get(i)+1);
+            }
+        }
+        for(int i = 0; i < 21; i++){
+            System.out.println(i +": "+numbers.get(i));
+        }
+        ArrayList<Integer> prime = new ArrayList<>();
+        for(int i = 0; i < numbers.size(); i++){
+            if(numbers.get(i) == 2){
+                prime.add(i);
+            }
+        }
+        System.out.println("this is for the prime list-----------------------------------------------------------");
+        for(int i = 0; i < 21; i++){
+            System.out.println(i + " : "+prime.get(i));
+        }
+        System.out.println(prime.indexOf(104743));
+        System.out.println(numbers.get(104743));
+        return prime.get(target-1);
+    }
+
     //quesiton 6: Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
     public static void bigDiff(long target){
         long square = 0;
