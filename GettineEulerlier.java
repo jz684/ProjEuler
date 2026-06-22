@@ -6,8 +6,31 @@ public class GettineEulerlier {
     public static void main (String[] args){//this is where im running each function to see if it works
         // long input = 600851475143L ;//600851475143L
         // System.out.println(primeTime(input));
-        triplingUp();
+        System.out.println(suPrime(2000000));
     }
+
+    //question 10: Find the sum of all the primes below two million.
+    //idea:just multiply a lot of numbers and see if a number has multiple factors
+    public static long suPrime(int target){
+        long[] list = new long[target+1];
+        long result = 0;
+        for(int i = 0; i <= target ; i++){//chose to use 2000000 as the bound bc you have to check the 1*2000000 scenario 
+            for(int j = 0; j <= target && i*j>=0; j++){
+                if(i*j <= target ){//dont really need to do the equals to bc 2000000 is obviously not prime, but why not just include'
+                    list[i*j] += 1;
+                }
+            }
+        }
+        for(int i = 0; i < list.length; i++){
+            //System.out.println(i + " : "+list[i]);
+            if(list[i] == 2){
+                //System.out.println("adding" + i);
+                result+=i;
+            }
+        }
+        return result;
+    }
+
     //question 9: There exists exactly one Pythagorean triplet for which a+b+c=1000. Find the product abc.
     //doing a little math i got to: a+b+sqrt(a^2 + b^2) = 1000 --> 0=1000000-a2000-b2000. I'm not the surest 
     //on what my next step is supposed to be since i already plugged in for c, so the code will carry the rest
