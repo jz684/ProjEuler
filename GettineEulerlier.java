@@ -6,8 +6,28 @@ public class GettineEulerlier {
     public static void main (String[] args){//this is where im running each function to see if it works
         // long input = 600851475143L ;//600851475143L
         // System.out.println(primeTime(input));
-        System.out.println(prodGriddy());
+        HDTriangles(1, 01);
     }
+    //question 12: What is the value of the first triangle number to have over five hundred divisors?
+    //this feels similar to evenFibbier(question 2). I think I can just do a recursive verson and then try to do the method I used for primes 
+    //to see how many factors there are. 
+    public static void HDTriangles(int n, int currVal){//parameters are the nth term and the current value
+        int total = 0;
+        for(int i =1; i < currVal+1; i++){
+            if(currVal % i == 0){
+                total++;
+            }
+        }
+        if(total > 500){
+            System.out.println(currVal);
+            //System.out.println("stop");
+        }
+        else{
+            HDTriangles(n+1, currVal + n+1);
+        }
+        
+    }
+
     //question 11: 
     // 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
     // 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
@@ -61,7 +81,6 @@ public class GettineEulerlier {
         //checking other diagnol
         for(int i = 19 ; i>4 ; i--){
             for(int j = 0 ; j<16 ; j++){
-                //System.out.println(ODiag(i, j, parse));
                 if(ODiag(i, j, parse) > evaluated[i][j]){
                     evaluated[i][j] = ODiag(i, j, parse);
                 }
